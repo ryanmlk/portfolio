@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'fira_monobold';
+    src: url('fonts/firamono-bold.woff2') format('woff2'),
+         url('fonts/firamono-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'fira_monomedium';
+    src: url('fonts/firamono-medium.woff2') format('woff2'),
+         url('fonts/firamono-medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'fira_monoregular';
+    src: url('fonts/firamono-regular.woff2') format('woff2'),
+         url('fonts/firamono-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'rubik_mono_oneregular';
+    src: url('fonts/rubikmonoone-regular.woff2') format('woff2'),
+         url('fonts/rubikmonoone-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --primary-color: #1E1D40;
+    --secondary-color: #C2C2C2;
+    --primary-font: 'rubik_mono_oneregular', 'Courier New', Courier, monospace;
+    --secondary-font: 'fira_monobold', 'Courier New', Courier, monospace;
+}
+
+html, body {
+    margin: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+section {
+    padding: 40px 40px 40px 118px;
+}
+
+h1 {
+    font-size: 96px;
+    font-family: var(--primary-font);
+}
+
+h2 {
+    font-size: 27px;
+    font-family: var(--primary-font);
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+.main {
+    background-color: var(--primary-color);
+    height: 750px;
+    color: var(--secondary-color);
+
+    .header {
+        display: flex;
+        justify-content: flex-end;
+        .list {
+            font-family: var(--primary-font);
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            font-size: 18px;
+            gap: 30px;
+            font-weight: 600;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .intro {
+        font-size: 24px;
+        font-weight: 600;
+        width: 40%;
+        font-family: var(--secondary-font);
+    }
+
+    .hero {
+        width: 50%;
+        height: max-content;
+    }
+}
+
+.about {
+    background-color: var(--primary-color);
+    height: 750px;
+    color: var(--secondary-color);
+
+    .header {
+        display: flex;
+        justify-content: flex-end;
+        .list {
+            font-family: var(--primary-font);
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            font-size: 18px;
+            gap: 30px;
+            font-weight: 600;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .intro {
+        font-size: 24px;
+        font-weight: 600;
+        width: 40%;
+        font-family: var(--secondary-font);
+    }
+
+    .hero {
+        width: 50%;
+        height: max-content;
+    }
+}

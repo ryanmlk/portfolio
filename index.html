@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Ryan Moses</title>
+    </head>
+    <body>
+        <section class="main" id="main">
+            <div class="header">
+                <div class="list">
+                    <p>HOME</p>
+                    <p>ABOUT</p>
+                    <p>CONTACT</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="intro">
+                    <h2>HI I'M</h2>
+                    <h1>RYAN</h1>
+                    <p>Full-stack software engineer with a passion for learning and creating elegant solutions</p>
+                </div>
+                <img src="assets/hero.png" alt="hero" class="hero"/>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <div class="content">
+                <div class="intro">
+                    <h2>About</h2>
+                </div>
+            </div>
+        </section>
+        <script>
+            // Get a reference to the second section
+            const aboutSection = document.getElementById('about');
+          
+            // Add an event listener to the document for the wheel event
+            document.addEventListener('wheel', (event) => {
+              // Check if the user is scrolling down (positive delta)
+              if (event.deltaY > 0) {
+                console.log('Scrolling');
+                // Use the scrollIntoView method with behavior 'smooth' to scroll to the about section
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          </script>
+    </body>
+</html>
