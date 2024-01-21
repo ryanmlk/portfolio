@@ -1,5 +1,42 @@
+@font-face {
+  font-family: 'fira_monobold';
+  src:
+    url('./fonts/firamono-bold.woff2') format('woff2'),
+    url('./fonts/firamono-bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_monomedium';
+  src:
+    url('./fonts/firamono-medium.woff2') format('woff2'),
+    url('./fonts/firamono-medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_monoregular';
+  src:
+    url('./fonts/firamono-regular.woff2') format('woff2'),
+    url('./fonts/firamono-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rubik_mono_oneregular';
+  src:
+    url('./fonts/rubikmonoone-regular.woff2') format('woff2'),
+    url('./fonts/rubikmonoone-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
+  --primary-color: #1e1d40;
+  --secondary-color: #c2c2c2;
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -19,6 +56,9 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --primary-font: 'rubik_mono_oneregular', 'Courier New', Courier, monospace;
+  --secondary-font: 'fira_monobold', 'Courier New', Courier, monospace;
 }
 
 /* semantic color variables for this project */
