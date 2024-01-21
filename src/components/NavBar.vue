@@ -16,14 +16,33 @@
     top: 0;
     right: 20px;
     width: 100vw;
+    background-color: var(--primary-color);
 
     .item {
         font-family: var(--primary-font);
         padding: 10px;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         color: var(--secondary-color);
         cursor: pointer;
         font-weight: 600;
+    }
+}
+
+@media(max-width: 767px) {
+    .navContainer {
+        .item {
+            font-size: 0.8rem;
+            padding: 8px;
+        }
+    }
+}
+
+@media(max-width: 575px) {
+    .navContainer {
+        .item {
+            font-size: 0.5rem;
+            padding: 4px;
+        }
     }
 }
 </style>
