@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import NavBar from '@/components/NavBar.vue';
 import { Rive } from "@rive-app/canvas";
 import createScrollSnap from 'scroll-snap';
+import { Smoothie } from "vue-smoothie";
 </script>
 
 <script lang="ts">
@@ -21,7 +22,7 @@ export default {
     });
 
     const scrollContainer = document.getElementById('scrollContainer');
-    if (scrollContainer && window.innerWidth >= 992) {
+    if (scrollContainer) {
       createScrollSnap(scrollContainer, {
         snapDestinationX: '0%',
         snapDestinationY: '100%',
@@ -53,8 +54,7 @@ export default {
 <template>
   <main>
     <NavBar />
-    <full-page>
-      <div id="scrollContainer" class="scrollContainer">
+      <Smoothie id="scrollContainer" class="scrollContainer">
         <section class="root">
           <transition appear @before-enter="beforeEnter" @enter="enter">
             <div class="leftSection">
@@ -68,8 +68,7 @@ export default {
           </div>
         </section>
         <section>Test</section>
-      </div>
-    </full-page>
+      </Smoothie>
   </main>
 </template>
 
@@ -78,21 +77,25 @@ main {
   background-color: var(--primary-color);
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   overflow-x: hidden;
 }
 
 section {
   width: 100%;
   height: 100vh;
+  height: 100svh;
 
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
   }
 }
 
 .scrollContainer {
   overflow-y: scroll;
   height: 100vh;
+  height: 100svh;
   width: 100%;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -179,14 +182,6 @@ section {
       height: 60%;
       margin-top: 40px;
     }
-  }
-
-  section {
-    scroll-snap-align: center;
-  }
-
-  .scrollContainer {
-    scroll-snap-type: y mandatory;
   }
 }
 
