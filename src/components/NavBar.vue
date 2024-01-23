@@ -8,9 +8,11 @@
 
 <style scoped>
 .navContainer {
-    margin-top: 20px;
+    z-index: 2;
+    height: 60px;
     position: fixed;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     flex-direction: row;
     top: 0;

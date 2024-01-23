@@ -2,6 +2,7 @@
 import gsap from 'gsap';
 import NavBar from '@/components/NavBar.vue';
 import { Rive } from "@rive-app/canvas";
+import createScrollSnap from 'scroll-snap';
 </script>
 
 <script lang="ts">
@@ -18,6 +19,18 @@ export default {
       delay: 1,
       duration: 1,
     });
+
+    const scrollContainer = document.getElementById('scrollContainer');
+    if (scrollContainer && window.innerWidth >= 992) {
+      createScrollSnap(scrollContainer, {
+        snapDestinationX: '0%',
+        snapDestinationY: '100%',
+        timeout: 100,
+        duration: 1000,
+        threshold: 0.1,
+        snapStop: false,
+      })
+    }
   },
   methods: {
     // where the animation will start from
@@ -40,18 +53,23 @@ export default {
 <template>
   <main>
     <NavBar />
-    <div class="root">
-      <transition appear @before-enter="beforeEnter" @enter="enter">
-        <div class="leftSection">
-          <h2>HI I'M</h2>
-          <h1>RYAN</h1>
-          <p>Full-stack software engineer with a passion for learning and creating elegant software solutions</p>
-        </div>
-      </transition>
-      <div class="rightSection">
-        <canvas className="hero" id="hero" width="600" height="600" />
+    <full-page>
+      <div id="scrollContainer" class="scrollContainer">
+        <section class="root">
+          <transition appear @before-enter="beforeEnter" @enter="enter">
+            <div class="leftSection">
+              <h2>HI I'M</h2>
+              <h1>RYAN</h1>
+              <p>Full-stack software engineer with a passion for learning and creating elegant software solutions</p>
+            </div>
+          </transition>
+          <div class="rightSection">
+            <canvas className="hero" id="hero" width="600" height="600" />
+          </div>
+        </section>
+        <section>Test</section>
       </div>
-    </div>
+    </full-page>
   </main>
 </template>
 
@@ -60,11 +78,31 @@ main {
   background-color: var(--primary-color);
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+
+  &:nth-child(2) {
+    height: calc(100vh - 70px);
+  }
+}
+
+.scrollContainer {
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .root {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -141,6 +179,14 @@ main {
       height: 60%;
       margin-top: 40px;
     }
+  }
+
+  section {
+    scroll-snap-align: center;
+  }
+
+  .scrollContainer {
+    scroll-snap-type: y mandatory;
   }
 }
 
