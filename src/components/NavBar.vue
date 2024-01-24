@@ -18,7 +18,6 @@
     top: 0;
     right: 20px;
     width: 100vw;
-    background-color: var(--primary-color);
 
     .item {
         font-family: var(--primary-font);

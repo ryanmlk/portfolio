@@ -60,14 +60,13 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 100px;
     color: var(--secondary-color);
 
     .leftSection {
         flex: 1;
 
         h1 {
-            font-weight: 600;
+            font-weight: 500;
             margin-left: -8px;
             line-height: 95px;
             font-family: var(--primary-font);
@@ -75,13 +74,13 @@ export default {
         }
 
         h2 {
-            font-weight: 600;
+            font-weight: 500;
             font-family: var(--primary-font);
             font-size: 1.6rem;
         }
 
         p {
-            font-weight: 600;
+            font-weight: 500;
             margin-top: 22px;
             font-family: var(--secondary-font);
             font-size: 1.5rem;
@@ -136,7 +135,6 @@ export default {
 
 @media(max-width: 575px) {
     .root {
-        padding: 80px 20px 20px 20px;
 
         .leftSection {
             flex: 1;

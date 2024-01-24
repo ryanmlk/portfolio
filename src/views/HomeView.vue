@@ -56,10 +56,10 @@ export default {
 <template>
   <main>
     <NavBar />
-       <Smoothie id="scrollContainer" class="scrollContainer" :weight="0.2">
-        <IntroSection/>
-        <AboutSection/>
-      </Smoothie>
+    <Smoothie id="scrollContainer" class="scrollContainer" :weight="0.2">
+      <IntroSection />
+      <AboutSection />
+    </Smoothie>
   </main>
 </template>
 
@@ -97,14 +97,16 @@ main {
 </style>
 
 <style>
-  section {
-    height: 100vh;
-    height: 100svh;
-    width: 100vw;
+section {
+  height: 100vh;
+  height: 100svh;
+  width: 100vw;
+  padding: 100px;
+}
 
-    &:nth-last-of-type(1) {
-      height: calc(100vh - 70px);
-      height: calc(100svh - 70px);
-    }
+@media(max-width: 575px) {
+  .root {
+    padding: 80px 20px 20px 20px;
   }
+}
 </style>

@@ -33,6 +33,15 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'arial_rounded';
+  src:
+    url('./fonts/ArialRoundedMTBold.woff') format('woff'),
+    url('./fonts/ArialRoundedMTBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --primary-color: #1e1d40;
