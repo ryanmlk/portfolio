@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import gsap from 'gsap';
-import NavBar from '@/components/NavBar.vue';
 import { Rive } from "@rive-app/canvas";
 import createScrollSnap from 'scroll-snap';
 import { Smoothie } from "vue-smoothie";
+import NavBar from '@/components/NavBar.vue';
+import IntroSection from "@/components/IntroSection.vue"
+import AboutSection from "@/components/AboutSection.vue"
 </script>
 
 <script lang="ts">
@@ -27,7 +29,7 @@ export default {
         snapDestinationX: '0%',
         snapDestinationY: '100%',
         timeout: 100,
-        duration: 1000,
+        duration: 100,
         threshold: 0.1,
         snapStop: false,
       })
@@ -54,20 +56,9 @@ export default {
 <template>
   <main>
     <NavBar />
-      <Smoothie id="scrollContainer" class="scrollContainer">
-        <section class="root">
-          <transition appear @before-enter="beforeEnter" @enter="enter">
-            <div class="leftSection">
-              <h2>HI I'M</h2>
-              <h1>RYAN</h1>
-              <p>Full-stack software engineer with a passion for learning and creating elegant software solutions</p>
-            </div>
-          </transition>
-          <div class="rightSection">
-            <canvas className="hero" id="hero" width="600" height="600" />
-          </div>
-        </section>
-        <section>Test</section>
+       <Smoothie id="scrollContainer" class="scrollContainer" :weight="0.2">
+        <IntroSection/>
+        <AboutSection/>
       </Smoothie>
   </main>
 </template>
@@ -79,17 +70,6 @@ main {
   height: 100vh;
   height: 100svh;
   overflow-x: hidden;
-}
-
-section {
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-
-  &:nth-of-type(2) {
-    height: calc(100vh - 70px);
-    height: calc(100svh - 70px);
-  }
 }
 
 .scrollContainer {
@@ -105,117 +85,26 @@ section {
   }
 }
 
-.root {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 100px;
-  color: var(--secondary-color);
-
-  .leftSection {
-    flex: 1;
-
-    h1 {
-      font-weight: 600;
-      margin-left: -8px;
-      line-height: 95px;
-      font-family: var(--primary-font);
-      font-size: 6rem;
-    }
-
-    h2 {
-      font-weight: 600;
-      font-family: var(--primary-font);
-      font-size: 1.6rem;
-    }
-
-    p {
-      font-weight: 600;
-      margin-top: 22px;
-      font-family: var(--secondary-font);
-      font-size: 1.5rem;
-      width: 90%;
-      line-height: 30px;
-    }
-  }
-
-  .rightSection {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .hero {
-      opacity: 0;
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-}
-
 @media(max-width: 1399px) {}
 
 @media(max-width: 1199px) {}
 
-@media(max-width: 991px) {
-  .root {
-    flex-direction: column;
-
-    .leftSection {
-      h1 {
-        font-size: 5rem;
-        line-height: 80px;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      p {
-        font-size: 1rem;
-        line-height: 20px;
-        margin-top: 12px;
-      }
-    }
-
-    .rightSection {
-      height: 60%;
-      margin-top: 40px;
-    }
-  }
-}
+@media(max-width: 991px) {}
 
 @media(max-width: 767px) {}
 
-@media(max-width: 575px) {
-  .root {
-    padding: 80px 20px 20px 20px;
+@media(max-width: 575px) {}
+</style>
 
-    .leftSection {
-      flex: 1;
+<style>
+  section {
+    height: 100vh;
+    height: 100svh;
+    width: 100vw;
 
-      h1 {
-        font-size: 3rem;
-        line-height: 50px;
-        margin-left: -5px;
-      }
-
-      h2 {
-        font-size: 0.8rem;
-      }
-
-      p {
-        font-size: 0.8rem;
-        line-height: 18px;
-        margin-top: 10px;
-      }
-    }
-
-    .rightSection {
-      align-items: flex-start;
-      flex: 2;
-      margin-top: 0px;
+    &:nth-last-of-type(1) {
+      height: calc(100vh - 70px);
+      height: calc(100svh - 70px);
     }
   }
-}
 </style>
