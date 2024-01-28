@@ -1,8 +1,27 @@
 <script setup lang="ts">
 import { Smoothie } from "vue-smoothie";
 import NavBar from '@/components/NavBar.vue';
-import IntroSection from "@/components/IntroSection.vue"
-import AboutSection from "@/components/AboutSection.vue"
+import IntroSection from "@/components/IntroSection.vue";
+import AboutSection from "@/components/AboutSection.vue";
+import createScrollSnap from 'scroll-snap';
+</script>
+
+<script lang="ts">
+export default {
+  mounted: function () {
+    const scrollContainer = document.getElementById('scrollContainer');
+    if (scrollContainer) {
+      createScrollSnap(scrollContainer, {
+        snapDestinationX: '0%',
+        snapDestinationY: '100%',
+        timeout: 100,
+        duration: 100,
+        threshold: 0.1,
+        snapStop: false,
+      })
+    }
+  }
+}
 </script>
 
 <template>
