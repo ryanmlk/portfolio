@@ -1,20 +1,57 @@
 <script lang="ts">
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default {
     props: {
         progressWidth: {
             type: String,
             required: true,
             default: '0%'
+        },
+        skillId: {
+            type: String,
+            required: true,
+            default: ''
+        },
+    },
+    unmounted: function () {
+        ScrollTrigger.killAll();
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.refresh();
+            this.gsapSet();
+        });
+    },
+    methods: {
+        gsapSet() {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#skillsSection',
+                    start: "top center",
+                    scroller: '#scrollContainer'
+                },
+            }).to(`#${this.skillId}Heading`, {
+                alpha: 1,
+                y: 0,
+                duration: 1.5,
+                delay: .5
+            }).to(`#${this.skillId}Progress`, {
+                width: this.progressWidth,
+                duration: 1.5,
+                delay: -0.5
+            });
         }
-    }
+    },
 }
 </script>
 
 <template>
     <div class="skillContainer">
-        <slot name="skill" class="skill" />
+        <slot :id="`${skillId}Heading`" name="skill" class="skill" />
         <div class="levelBar">
-            <div class="progress" :style="{ width: progressWidth }" />
+            <div :id="`${skillId}Progress`" class="progress" />
         </div>
     </div>
 </template>
@@ -30,6 +67,8 @@ export default {
     .skill {
         width: 40%;
         font-family: arial_rounded;
+        opacity: 0;
+        transform: translateY(-150px);
     }
 
     .levelBar {
@@ -42,6 +81,7 @@ export default {
             background-color: var(--primary-color);
             border-radius: 5px;
             height: 100%;
+            width: 0%;
         }
     }
 }

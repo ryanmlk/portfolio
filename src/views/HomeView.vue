@@ -8,6 +8,10 @@ import createScrollSnap from 'scroll-snap';
 
 <script lang="ts">
 export default {
+  components: {
+    IntroSection: IntroSection,
+    AboutSection: AboutSection
+  },
   mounted: function () {
     const scrollContainer = document.getElementById('scrollContainer');
     if (scrollContainer) {
@@ -27,24 +31,23 @@ export default {
 <template>
   <main>
     <NavBar />
-    <Smoothie id="scrollContainer" class="scrollContainer" :weight="0.2">
-      <IntroSection />
-      <AboutSection />
+    <Smoothie id="scrollContainer" class="scrollContainer">
+        <IntroSection />
+        <AboutSection />
     </Smoothie>
   </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 main {
   background-color: var(--primary-color);
   width: 100vw;
-  height: 100vh;
-  height: 100svh;
   overflow-x: hidden;
 }
 
 .scrollContainer {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   height: 100svh;
   width: 100%;
@@ -71,7 +74,7 @@ main {
 section {
   height: 100vh;
   height: 100svh;
-  width: 100vw;
+  max-width: 100vw;
   padding: 100px;
 }
 

@@ -1,7 +1,44 @@
 <script lang="ts">
 import SkillItem from './SkillItem.vue';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default {
+    unmounted: function () {
+        ScrollTrigger.killAll();
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.refresh();
+            this.gsapSet();
+        });
+    },
+    methods: {
+        gsapSet() {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#aboutSection',
+                    start: "top center",
+                    scroller: '#scrollContainer'
+                },
+            }).to('#aboutHeading', {
+                alpha: 1,
+                y: 0,
+                duration: 1.5
+            }).to('#skillsHeading', {
+                alpha: 1,
+                y: 0,
+                duration: 1.5,
+                delay: -1.5
+            }).to('#aboutContent', {
+                alpha: 1,
+                y: 0,
+                duration: 1.5,
+                delay: -1
+            });
+        }
+    },
     components: {
         SkillItem,
     },
@@ -42,9 +79,9 @@ export default {
                 <div class="divider" />
             </div>
             <div class="content">
-                <SkillItem v-for="skill in skills" :key="skill.name" :progressWidth="skill.progressWidth">
+                <SkillItem v-for="(skill, index) in skills" :key="skill.name" :skillId="`skill${index}`" :progressWidth="skill.progressWidth">
                     <template #skill>
-                        {{ skill.name }}
+                        <div :id="`skill${index}Heading`" class="skill">{{ skill.name }}</div>
                     </template>
                 </SkillItem>
             </div>
@@ -69,6 +106,8 @@ section {
     flex: 4;
 
     .content {
+        opacity: 0;
+        transform: translateY(-150px);
         text-align: justify;
     }
 }
@@ -89,6 +128,8 @@ section {
     font-size: 27px;
     width: fit-content;
     padding-bottom: 30px;
+    opacity: 0;
+    transform: translateY(-150px);
 
     .divider {
         background-color: var(--primary-color);
